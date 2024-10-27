@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.UserMapper">
+    <select id="getAllUsers" resultType="com.example.demo.entity.User">
+        SELECT * FROM user
+    </select>
+    <!-- 根据用户名模糊查询用户 -->
+    <select id="findUsersByName" parameterType="string" resultType="com.example.demo8.entity.User">
+        SELECT * FROM users WHERE name LIKE CONCAT('%', #{name}, '%')
+    </select>
+
+
+    <insert id="insertUser" parameterType="com.example.demo.entity.User">
+        INSERT INTO user(name, email) VALUES(#{name}, #{email})
+    </insert>
+
+</mapper>
